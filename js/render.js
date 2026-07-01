@@ -205,10 +205,19 @@ function drawHunter() {
   if (h.mode === "caught") {
     drawStrip(h.caughtTimer > 1.4 ? "catched1" : "catched2", h.x, y, (2.4 - h.caughtTimer) * 8, h.rot);
   } else if (h.mode === "shoot") {
-    drawStrip("man_shoot2", h.x, y - 90, 0, h.rot);
+    drawHunterShoot(h, y);
   } else {
     drawStrip(h.mode === "go" ? "man_go" : "man_stay", h.x, y, performance.now() / 160, h.rot);
   }
+}
+
+function drawHunterShoot(h, y) {
+  const [fw, fh] = spriteInfo.man_shoot2;
+  ctx.save();
+  ctx.translate(h.x + h.w / 2, y + h.h / 2);
+  ctx.rotate(h.rot);
+  ctx.drawImage(imgs.man_shoot2, 0, 0, fw, fh, -h.w / 2, -h.h / 2 - 90, fw, fh);
+  ctx.restore();
 }
 
 function drawTopHud() {

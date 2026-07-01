@@ -106,7 +106,7 @@ function updateSpinShot(dt) {
 
 function spinShot(angle) {
   const h = game.hunter;
-  const from = { x: h.x + h.w / 2, y: h.y + h.h / 2 };
+  const from = shotOrigin(angle);
   const to = { x: from.x + Math.sin(angle) * 800, y: from.y - Math.cos(angle) * 800 };
   game.shot = { from, to, t: .12 };
   play("shoot");
@@ -303,9 +303,11 @@ function shoot(target = aimTarget) {
   game.bullets--;
   h.shootTimer = .45;
   h.mode = "shoot";
-  const from = { x: h.x + h.w / 2, y: h.y + h.h / 2 };
+  const center = { x: h.x + h.w / 2, y: h.y + h.h / 2 };
+  const aim = target || { x: center.x + Math.sin(h.rot) * 800, y: center.y - Math.cos(h.rot) * 800 };
+  h.rot = Math.atan2(aim.x - center.x, -(aim.y - center.y));
+  const from = shotOrigin(h.rot);
   const to = target || { x: from.x + Math.sin(h.rot) * 800, y: from.y - Math.cos(h.rot) * 800 };
-  h.rot = Math.atan2(to.x - from.x, -(to.y - from.y));
   game.shot = { from, to, t: .45 };
   play("shoot");
   game.gays.forEach((g) => {
@@ -316,6 +318,14 @@ function shoot(target = aimTarget) {
       play("gay_killed");
     }
   });
+}
+
+function shotOrigin(angle) {
+  const h = game.hunter;
+  return {
+    x: h.x + h.w / 2 + Math.sin(angle) * 46,
+    y: h.y + h.h / 2 - Math.cos(angle) * 46,
+  };
 }
 
 function collectBullets() {
