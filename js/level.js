@@ -28,7 +28,7 @@ function startGame(reset = true) {
   state = "game";
   sounds.start.pause();
   play("game");
-  statusEl.textContent = "Right-click to move. Left-click to shoot. Press C for chakram.";
+  statusEl.textContent = "Right-click to move. Left-click to shoot. Press C for chakram. Press V for 360 shot.";
 }
 
 function newLevel(extraBullets = 0, resetLives = true) {
