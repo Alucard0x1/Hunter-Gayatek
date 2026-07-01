@@ -56,6 +56,7 @@ function drawMenuText() {
 
 function drawGame() {
   ctx.drawImage(imgs[`newmap_level${game.map}`], 0, 0, W, H);
+  drawExitSigns();
   if (game.smallBush) ctx.drawImage(imgs.newbush_small, game.smallBush.x, game.smallBush.y, 61, 52);
   game.cartridges.forEach((b) => { if (b.visible) ctx.drawImage(imgs.bullets, b.x, b.y); });
   game.gays.forEach((g) => {
@@ -77,6 +78,38 @@ function drawGame() {
   drawHunterStatus();
   drawNoAmmo();
   drawMoveTarget();
+}
+
+function drawExitSigns() {
+  drawExitSign(W - 78, 252, "EXIT", "right");
+  if (game.map > 1) drawExitSign(585, 34, "EXIT", "up");
+  if (game.map === 2 || game.map === 4) drawExitSign(500, H - 58, "EXIT", "down");
+}
+
+function drawExitSign(x, y, label, dir) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.globalAlpha = .9;
+  ctx.fillStyle = "#5b3519";
+  ctx.fillRect(-34, -15, 68, 30);
+  ctx.strokeStyle = "#f2cf5a";
+  ctx.lineWidth = 2;
+  ctx.strokeRect(-34, -15, 68, 30);
+  ctx.fillStyle = "#2b190c";
+  ctx.fillRect(-4, 15, 8, 20);
+  text(label, 0, 7, 16, "#ffef85", "center");
+  ctx.strokeStyle = "#ffef85";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  if (dir === "right") {
+    ctx.moveTo(20, 0); ctx.lineTo(30, 0); ctx.lineTo(24, -6); ctx.moveTo(30, 0); ctx.lineTo(24, 6);
+  } else if (dir === "up") {
+    ctx.moveTo(26, 5); ctx.lineTo(26, -7); ctx.lineTo(20, -1); ctx.moveTo(26, -7); ctx.lineTo(32, -1);
+  } else {
+    ctx.moveTo(26, -7); ctx.lineTo(26, 5); ctx.lineTo(20, -1); ctx.moveTo(26, 5); ctx.lineTo(32, -1);
+  }
+  ctx.stroke();
+  ctx.restore();
 }
 
 function drawLassos() {
