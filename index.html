@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Hunter-Gayatek is a desktop HTML canvas survival game about a hunter fighting Gayatek vampires across multiple levels.">
+  <meta name="robots" content="index, follow">
+  <meta name="application-name" content="Hunter-Gayatek">
+  <meta name="theme-color" content="#10130c">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hunter-Gayatek">
+  <meta property="og:title" content="Hunter-Gayatek">
+  <meta property="og:description" content="A desktop HTML canvas survival game where a hunter fights Gayatek vampires across multiple levels.">
+  <meta property="og:url" content="https://tembakgay.vercel.app/">
+  <meta property="og:image" content="https://tembakgay.vercel.app/assets/gfx/start.png">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="480">
+  <meta property="og:image:alt" content="Hunter-Gayatek start screen showing the hunter artwork.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hunter-Gayatek">
+  <meta name="twitter:description" content="A desktop HTML canvas survival game where a hunter fights Gayatek vampires across multiple levels.">
+  <meta name="twitter:image" content="https://tembakgay.vercel.app/assets/gfx/start.png">
+  <title>Hunter-Gayatek</title>
+  <link rel="canonical" href="https://tembakgay.vercel.app/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2310130c'/%3E%3Ccircle cx='32' cy='32' r='22' fill='%23f2cf5a'/%3E%3Cpath d='M32 8v48M8 32h48' stroke='%23b90000' stroke-width='6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Hunter-Gayatek",
+      "alternateName": "Gayatek Hunter",
+      "description": "Hunter-Gayatek is a desktop HTML canvas survival game about a hunter fighting Gayatek vampires across multiple levels.",
+      "url": "https://tembakgay.vercel.app/",
+      "image": "https://tembakgay.vercel.app/assets/gfx/start.png",
+      "genre": ["Action", "Survival"],
+      "gamePlatform": "Web browser",
+      "operatingSystem": "Desktop",
+      "applicationCategory": "GameApplication",
+      "playMode": "SinglePlayer",
+      "browserRequirements": "Requires a desktop browser with mouse and keyboard controls.",
+      "creator": {
+        "@type": "Person",
+        "name": "Stéphane Aguie"
+      },
+      "contributor": {
+        "@type": "Person",
+        "name": "Alucard0x1"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  </script>
+</head>
+<body>
+  <main class="shell">
+    <canvas id="game" width="960" height="480" tabindex="0" aria-label="Gayatek hunter game"></canvas>
+    <div class="hud">
+      <button id="mute" type="button" title="Mute sound">Sound</button>
+      <span id="status">Right-click to move. Left-click to shoot. Press C for chakram.</span>
+    </div>
+  </main>
+  <div id="desktopGate" class="desktop-gate" hidden>
+    <div class="desktop-gate__panel">
+      <h1>Desktop Hunt Only</h1>
+      <p>Hunter-Gayatek is built for mouse aiming, right-click movement, and keyboard abilities.</p>
+      <p>Please open this game on a desktop or laptop computer.</p>
+    </div>
+  </div>
+  <script src="js/config.js?v=42"></script>
+  <script src="js/state.js?v=42"></script>
+  <script src="js/utils.js?v=42"></script>
+  <script src="js/assets-audio.js?v=42"></script>
+  <script src="js/level.js?v=42"></script>
+  <script src="js/systems.js?v=42"></script>
+  <script src="js/render.js?v=42"></script>
+  <script src="js/input.js?v=42"></script>
+  <script src="js/main.js?v=42"></script>
+</body>
+</html>
